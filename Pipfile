@@ -7,7 +7,6 @@ name = "pypi"
 flask = "*"
 fpdf = "*"
 python-dateutil = "*"
-gunicorn = "*"
 
 [dev-packages]
 
