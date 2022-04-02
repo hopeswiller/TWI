@@ -17,6 +17,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag elment/twi-date-generator:latest
     - name: Login to DockerHub
-      run: docker login -u elment -p $DOCKER_LOGIN
+      run: docker login --uername elment --password $DOCKER_LOGIN
     - name: Push the Docker Image
       run: docker push elment/twi-date-generator:latest
