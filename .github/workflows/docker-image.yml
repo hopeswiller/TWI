@@ -34,4 +34,4 @@ jobs:
         name: Build and Push the Docker image
         with:
           push: true
-          tags: elment/twi-date-generator:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/twi-date-generator:latest
