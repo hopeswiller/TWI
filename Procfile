@@ -1,1 +1,1 @@
-web: gunicorn src/__init__.py:create_app()
+web: gunicorn "src:create_app()"
