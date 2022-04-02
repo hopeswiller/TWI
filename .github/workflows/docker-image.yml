@@ -17,22 +17,23 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - uses: actions/checkout@v3
-#     - name: Build the Docker image
-#       run: docker build . --file Dockerfile --tag elment/twi-date-generator:latest
-#     - name: Push the Docker Image
-#       run: docker push elment/twi-date-generator:latest
   build:
     runs-on: ubuntu-latest
     steps:
-      -
-        uses: docker/build-push-action@v2
-        name: Build and Push the Docker image
-        with:
-          push: true
-          tags: elment/twi-date-generator:latest
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag elment/twi-date-generator:latest
+    - name: Push the Docker Image
+      run: docker push elment/twi-date-generator:latest
+      
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       -
+#         uses: docker/build-push-action@v2
+#         name: Build and Push the Docker image
+#         with:
+#           push: true
+#           tags: elment/twi-date-generator:latest
           
           
