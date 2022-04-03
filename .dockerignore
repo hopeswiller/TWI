@@ -23,4 +23,5 @@
 **/secrets.dev.yaml
 **/values.dev.yaml
 **/.pdf
+.pre-commit-config.*
 README.md
