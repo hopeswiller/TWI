@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+
+<div class="alert alert-success alert-dismissible" role="alert" id="alert">
+    {% for message in messages %}
+    <strong>SUCCESS!</strong> {{ message }}
+    {% endfor %}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+{% endif %}
+{% endwith %}
+
+<!-- Generate for single date -->
+<div class="container"
+    style="margin-bottom:30px; border:1px solid whitesmoke; padding: 15px 15px;box-shadow: 2px 5px 10px rgb(223, 223, 223)">
+
+    <h4 class="text-muted">Expiry Date Generation for Single Date</h4>
+
+    <form action="" method="POST">
+        <div class="row">
+            <div class='col-sm-6'>
+                <div class="form-group">
+                    <label for="production_date">Select Production Date</label>
+                    <div class='input-group date' id='datetimepicker'>
+                        <input type='text' name="production_date" id="production_date" class="form-control" required />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    <small class="form-text text-muted">Format is MM/DD/YYYY</small>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Generated Expiry Date</label>
+                    {% if context %}
+                    <input type="text" class="form-control" name="expiry_date" readonly value={{ context.shortdate }}>
+                    {% else %}
+                    <input type="text" class="form-control" name="expiry_date" readonly>
+                    {% endif %}
+                    <small class="form-text text-muted">Date is calculated with an of interval 18 months
+                        period</small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" name="type" value="single" checked>
+                    <label class="form-check-label" for="single">Single</label>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="form-check">
+                    {% if context %}
+                    <span class="text-muted">Production Date : {{ context.prod_date }}</span>
+                    <br>
+                    <span class="text-muted">Expiration Date : {{ context.longdate }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <input type="submit" class="form-control btn btn-success" id="" value="Generate">
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+<!-- Generate for date range -->
+<div class="container"
+    style="margin-bottom:30px; border:1px solid whitesmoke; padding: 15px 15px;box-shadow: 2px 5px 10px rgb(223, 223, 223)">
+
+    <h4 class="text-muted">Expiry Date Generation for Date Range</h4>
+
+    <form action="" method="POST">
+        <div class="row">
+            <div class='col-sm-6'>
+                <div class="form-group">
+                    <label for="start_date">Start Date</label>
+                    <div class='input-group date' id='startdatepicker'>
+                        <input type='text' name="start_date" id="start_date" class="form-control" required />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    <small class="form-text text-muted">Format is MM/DD/YYYY</small>
+                </div>
+            </div>
+            <div class='col-sm-6'>
+                <div class="form-group">
+                    <label for="end_date">End Date</label>
+                    <div class='input-group date' id='enddatepicker'>
+                        <input type='text' name="end_date" id="end_date" class="form-control" required />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    <small class="form-text text-muted">Format is MM/DD/YYYY</small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" name="type" value="multi" checked>
+                    <label class="form-check-label" for="multi">Multi</label>
+                </div>
+            </div>
+            <div class="col-md-2">
+                {% if context.showbtn %}
+                <div class="form-group">
+                    <a href="{{ url_for('app.download') }}" class="btn btn-primary form-control">Download PDF</a>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <input type="submit" class="form-control btn btn-success" id="" value="Generate">
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+{% endblock %}

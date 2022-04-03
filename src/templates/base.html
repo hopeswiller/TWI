@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Generator </title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!--loads static files-->
+    <link rel="icon" type="/png" sizes="32x32" href="{{ url_for('static', filename='logo32x32.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light" style="box-shadow: 2px 3px 7px rgb(223, 223, 223)">
+        <a class="navbar-brand" href="{{ url_for('app.index') }}">
+            Date Generator
+        </a>
+        <p class="navbar-text navbar-right text-muted" style="margin-right: auto;padding-right: 10px;" id="author">
+            Created by: <a href="https://github.com/hopeswiller" _target="blank">DBA</a>
+        </p>
+    </nav>
+
+
+    {% block content %}
+    {% endblock %}
+
+
+    <footer class="foot">
+        <div class="container" style="padding: 10px; text-align: center;">
+            <span>2022 Copyright &copy; All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+
+</html>
